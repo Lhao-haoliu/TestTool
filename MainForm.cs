@@ -21,43 +21,9 @@ namespace TestTool
             // 你可以按需要继续分组/调整顺序
             var sections = new List<MenuSection>
             {
-                new MenuSection("基础", new List<MenuItem>
+                new MenuSection("接口合集", new List<MenuItem>
                 {
-                    new MenuItem("Detect", () => new DetectForm()),
-                    new MenuItem("Detect Smooth", () => new DetectSmoothForm()),
-                    new MenuItem("Measure", () => new MeasureForm()),
-                    new MenuItem("Color", () => new ColorForm()),
-                }),
-
-                new MenuSection("Mirror", new List<MenuItem>
-                {
-                    new MenuItem("Mirror Detect", () => new MirrorDetectForm()),
-                    new MenuItem("Mirror Detect + OCR", () => new MirrorDetectOcrForm()),
-                }),
-
-                new MenuSection("OCR", new List<MenuItem>
-                {
-                    new MenuItem("OCR", () => new OcrForm()),
-                    new MenuItem("OCR-VL", () => new OcrVlForm()),
-                }),
-
-                new MenuSection("黄光", new List<MenuItem>
-                {
-                    new MenuItem("HG Detect + OCR", () => new HgDetectOcrForm()),
-                    new MenuItem("HG Similarity Check", () => new HgSimilarityCheckForm()),
-                }),
-
-                new MenuSection("TSK", new List<MenuItem>
-                {
-                    new MenuItem("TSK Detect", () => new TskDetectForm()),
-                    new MenuItem("TSK Etch", () => new TskEtchForm()),
-                    new MenuItem("TSK Similarity", () => new TskSimilarityForm()),
-                }),
-
-                new MenuSection("整合", new List<MenuItem>
-                {
-                    new MenuItem("ZH Detect + OCR", () => new ZhDetectOcrForm()),
-                    new MenuItem("ZH Similarity Check", () => new ZhSimilarityCheckForm()),
+                    new MenuItem("接口合集", () => new CombinedApiForm()),
                 }),
 
                 new MenuSection("其他", new List<MenuItem>
