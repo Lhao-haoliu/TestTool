@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 
 namespace TestTool
 {
     public static class ApiEndpoints
     {
+        public const string DefaultConfigFileName = "api_endpoints.json";
+
         public sealed class ApiEndpoint
         {
             public string Group { get; }
@@ -23,8 +27,8 @@ namespace TestTool
 
         private static readonly StringComparer NameComparer = StringComparer.OrdinalIgnoreCase;
 
-        // 统一维护：相似接口放在同一分组
-        public static readonly List<ApiEndpoint> Items = new List<ApiEndpoint>
+        // 统一维护：相似接口放在同一分组（默认内置）
+        private static readonly List<ApiEndpoint> DefaultItems = new List<ApiEndpoint>
         {
             new ApiEndpoint("基础", "detect", "http://10.53.192.100:3884/detect"),
             new ApiEndpoint("基础", "measure", "http://10.53.192.100:3884/measure"),
@@ -50,15 +54,47 @@ namespace TestTool
             new ApiEndpoint("其他", "splice", "http://10.53.192.100:3887/splice"),
         };
 
-        private static readonly Dictionary<string, string> UrlByName =
-            Items.ToDictionary(item => item.Name, item => item.Url, NameComparer);
+        private static readonly List<ApiEndpoint> Items = new List<ApiEndpoint>(DefaultItems);
+        private static Dictionary<string, string> _urlByName = BuildUrlIndex(Items);
+
+        static ApiEndpoints()
+        {
+            TryLoadFromFile(ConfigPath);
+        }
+
+        public static string ConfigPath => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DefaultConfigFileName);
+
+        public static IReadOnlyList<ApiEndpoint> All => Items;
 
         public static string GetUrl(string name, string fallback = "")
         {
             if (string.IsNullOrWhiteSpace(name))
                 return fallback;
 
-            return UrlByName.TryGetValue(name.Trim(), out var url) ? url : fallback;
+            return _urlByName.TryGetValue(name.Trim(), out var url) ? url : fallback;
+        }
+
+        public static bool TryLoadFromFile(string filePath)
+        {
+            if (string.IsNullOrWhiteSpace(filePath) || !File.Exists(filePath))
+                return false;
+
+            try
+            {
+                string json = File.ReadAllText(filePath);
+                var payload = JsonSerializer.Deserialize<ApiEndpointConfig>(
+                    json,
+                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                if (payload?.Endpoints == null || payload.Endpoints.Count == 0)
+                    return false;
+
+                ApplyOverrides(payload.Endpoints);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public static void BindTo(System.Windows.Forms.ComboBox cb, string defaultUrl, string group = "")
@@ -103,6 +139,51 @@ namespace TestTool
 
             // 手动输入：取 Text
             return (cb.Text ?? "").Trim();
+        }
+
+        private static Dictionary<string, string> BuildUrlIndex(IEnumerable<ApiEndpoint> endpoints)
+        {
+            return endpoints
+                .Where(item => !string.IsNullOrWhiteSpace(item.Name))
+                .ToDictionary(item => item.Name, item => item.Url, NameComparer);
+        }
+
+        private static void ApplyOverrides(IEnumerable<ApiEndpointEntry> entries)
+        {
+            var lookup = Items.ToDictionary(item => item.Name, NameComparer);
+
+            foreach (var entry in entries)
+            {
+                if (string.IsNullOrWhiteSpace(entry.Name) || string.IsNullOrWhiteSpace(entry.Url))
+                    continue;
+
+                var group = entry.Group ?? "";
+                var name = entry.Name.Trim();
+                var url = entry.Url.Trim();
+
+                if (lookup.TryGetValue(name, out var existing))
+                {
+                    Items.Remove(existing);
+                }
+
+                var endpoint = new ApiEndpoint(group, name, url);
+                Items.Add(endpoint);
+                lookup[name] = endpoint;
+            }
+
+            _urlByName = BuildUrlIndex(Items);
+        }
+
+        private sealed class ApiEndpointConfig
+        {
+            public List<ApiEndpointEntry> Endpoints { get; set; } = new List<ApiEndpointEntry>();
+        }
+
+        private sealed class ApiEndpointEntry
+        {
+            public string Group { get; set; } = "";
+            public string Name { get; set; } = "";
+            public string Url { get; set; } = "";
         }
     }
 }
