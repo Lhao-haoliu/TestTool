@@ -130,6 +130,39 @@ namespace TestTool
                 cb.Text = defaultUrl;
         }
 
+        public static void BindToUrls(System.Windows.Forms.ComboBox cb, string defaultUrl, string group = "")
+        {
+            cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown; // ✅ 可输入
+            cb.DisplayMember = "Url";
+            cb.ValueMember = "Url";
+
+            IEnumerable<ApiEndpoint> source = Items;
+            if (!string.IsNullOrWhiteSpace(group))
+            {
+                source = Items.Where(item => NameComparer.Equals(item.Group, group));
+            }
+
+            cb.DataSource = new List<ApiEndpoint>(source);
+
+            // ✅ 输入联想
+            cb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            cb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+
+            // 默认值：优先匹配列表；找不到就直接填（允许手动输入的 URL）
+            bool matched = false;
+            foreach (var kv in Items)
+            {
+                if (string.Equals(kv.Url, defaultUrl, StringComparison.OrdinalIgnoreCase))
+                {
+                    cb.SelectedValue = defaultUrl;
+                    matched = true;
+                    break;
+                }
+            }
+            if (!matched)
+                cb.Text = defaultUrl;
+        }
+
         // 获取用户最终输入的URL（选中或手输）
         public static string GetUrl(System.Windows.Forms.ComboBox cb)
         {
