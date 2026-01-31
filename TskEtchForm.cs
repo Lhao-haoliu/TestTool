@@ -333,11 +333,6 @@ namespace TestTool
                 }
 
                 string modelKey = cmbModelKey.Text.Trim();
-                if (string.IsNullOrWhiteSpace(modelKey))
-                {
-                    MessageBox.Show("请选择或输入 model_key");
-                    return;
-                }
 
                 var img2d = BuildImg2DBase64();
                 if (img2d.Count == 0)

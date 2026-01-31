@@ -115,11 +115,6 @@ namespace TestTool
 
                 // 2) model_key（界面输入，带默认值 Dummy）
                 string modelKey = txtModelKey.Text.Trim();
-                if (string.IsNullOrWhiteSpace(modelKey))
-                {
-                    MessageBox.Show("请输入 model_key");
-                    return;
-                }
 
                 // 3) Base64（上传图片生成）
                 string base64 = txtBase64.Text.Trim();

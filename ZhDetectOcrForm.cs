@@ -92,11 +92,6 @@ namespace TestTool
                 }
 
                 string modelKey = cmbModelKey.Text.Trim();
-                if (string.IsNullOrWhiteSpace(modelKey))
-                {
-                    MessageBox.Show("请选择或输入 model_key");
-                    return;
-                }
 
                 // 1) 发送 JSON（raw base64，不 Beautify）
                 string sendJson = JsonSerializer.Serialize(new

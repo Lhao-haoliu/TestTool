@@ -81,11 +81,6 @@ namespace TestTool
                 }
 
                 string modelKey = txtModelKey.Text.Trim();
-                if (string.IsNullOrWhiteSpace(modelKey))
-                {
-                    MessageBox.Show("请输入 model_key");
-                    return;
-                }
 
                 string rawPublic = txtPublicBase64.Text.Trim();
                 if (string.IsNullOrWhiteSpace(rawPublic))

@@ -110,12 +110,6 @@ namespace TestTool
                 return;
             }
 
-            if (isCompare && string.IsNullOrWhiteSpace(txtModelKey.Text))
-            {
-                MessageBox.Show("双图比对模式：model_key 不能为空");
-                return;
-            }
-
             btnRun.Enabled = false;
             btnCancel.Enabled = true;
             btnExport.Enabled = false;

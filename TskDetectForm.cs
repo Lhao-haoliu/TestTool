@@ -78,11 +78,6 @@ namespace TestTool
                 }
 
                 string modelKey = txtModelKey.Text.Trim();
-                if (string.IsNullOrWhiteSpace(modelKey))
-                {
-                    MessageBox.Show("请输入 model_key");
-                    return;
-                }
 
                 // 1) 发送 JSON（不缩进）
                 string sendJson = JsonSerializer.Serialize(new
