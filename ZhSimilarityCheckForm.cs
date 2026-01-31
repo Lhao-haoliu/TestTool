@@ -29,7 +29,7 @@ namespace TestTool
 
         private void ZhSimilarityCheckForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://localhost:3882/similarity-check";
+            txtUrl.Text = ApiEndpoints.GetUrl("zh similarity-check");
 
             // model_key 下拉（可手动输入）
             cmbModelKey.Items.Clear();

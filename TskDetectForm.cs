@@ -27,7 +27,7 @@ namespace TestTool
 
         private void TskDetectForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://10.53.192.100:3886/detect";
+            txtUrl.Text = ApiEndpoints.GetUrl("tsk detect");
             txtModelKey.Text = "multiple";
         }
 

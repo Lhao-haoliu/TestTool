@@ -11,7 +11,7 @@ namespace TestTool
         private void MeasureForm_Load(object sender, EventArgs e)
         {
             // 默认值（你可以按需改）
-            txtUrl.Text = "http://10.53.192.100:3884/measure";
+            txtUrl.Text = ApiEndpoints.GetUrl("measure");
             txtModelKey.Text = "Dummy";
 
         }

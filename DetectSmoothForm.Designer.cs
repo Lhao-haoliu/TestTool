@@ -43,31 +43,11 @@
             this.txtUrl.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtUrl.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
 
-            // ✅ 下拉候选项（你截图那批）
-            this.txtUrl.Items.AddRange(new object[] {
-                "http://10.53.192.100:3884/detect",
-                "http://10.53.192.100:3889/color",
-                "http://10.53.192.100:3888/detect_smooth",
-                "http://10.53.192.100:3884/measure",
-                "http://10.53.192.100:3883/detect",
-                "http://10.53.192.100:3883/mirror",
-                "http://10.53.192.100:3881/ocr",
-                "http://10.53.192.100:3885/ocr_vl",
-                "http://10.53.192.100:3887/splice",
-                "http://10.53.192.100:3886/detect",
-                "http://10.53.192.100:3886/ETCH",
-                "http://10.53.192.100:3886/classify-similarity",
-                "http://10.53.192.100:3882/detect-ocr"
-            });
-
             // ✅ 位置大小保持不变
             this.txtUrl.Location = new System.Drawing.Point(12, 12);
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(760, 23);
             this.txtUrl.TabIndex = 0;
-
-            // ✅ 默认值：本窗体默认是 detect_smooth
-            this.txtUrl.Text = "http://10.53.192.100:3888/detect_smooth";
             // 
             // btnSelectImage
             // 

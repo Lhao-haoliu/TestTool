@@ -33,7 +33,7 @@ namespace TestTool
 
         private void OcrForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://10.53.192.100:3881/ocr";
+            txtUrl.Text = ApiEndpoints.GetUrl("ocr");
         }
 
         private void btnSelectImage_Click(object sender, EventArgs e)

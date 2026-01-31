@@ -26,7 +26,7 @@ namespace TestTool
 
         private void ZhDetectOcrForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://10.53.192.100:3882/detect-ocr";
+            txtUrl.Text = ApiEndpoints.GetUrl("zh detect-ocr");
 
             // 下拉选项（允许手动输入）
             cmbModelKey.Items.Clear();

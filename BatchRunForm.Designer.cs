@@ -109,9 +109,6 @@
             txtUrl.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             txtUrl.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             txtUrl.FormattingEnabled = true;
-            txtUrl.Items.AddRange(new object[] {
-                "http://localhost:3882/similarity-check"
-            });
             txtUrl.Location = new System.Drawing.Point(77, 71);
             txtUrl.Name = "txtUrl";
             txtUrl.Size = new System.Drawing.Size(671, 25);

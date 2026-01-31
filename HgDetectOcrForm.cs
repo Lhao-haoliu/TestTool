@@ -27,7 +27,7 @@ namespace TestTool
 
         private void HgDetectOcrForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://localhost:3880/detect-ocr";
+            txtUrl.Text = ApiEndpoints.GetUrl("hg detect-ocr");
             txtModelKey.Text = "";
             txtModel1Conf.Text = "0.5";
             txtModel2Conf.Text = "0.5";

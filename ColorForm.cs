@@ -33,7 +33,7 @@ namespace TestTool
 
         private void ColorForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://10.53.192.100:3889/color";
+            txtUrl.Text = ApiEndpoints.GetUrl("color");
         }
 
         private void btnSelectImage_Click(object sender, EventArgs e)

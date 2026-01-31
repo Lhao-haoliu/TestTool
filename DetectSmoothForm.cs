@@ -34,7 +34,7 @@ namespace TestTool
 
         private void DetectSmoothForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://10.53.192.100:3888/detect_smooth";
+            ApiEndpoints.BindTo(txtUrl, ApiEndpoints.GetUrl("detect_smooth"), "基础");
         }
 
         private void btnSelectImage_Click(object sender, EventArgs e)

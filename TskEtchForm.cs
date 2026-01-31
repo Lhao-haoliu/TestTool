@@ -37,7 +37,7 @@ namespace TestTool
 
         private void TskEtchForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://10.53.192.100:3886/ETCH";
+            txtUrl.Text = ApiEndpoints.GetUrl("tsk etch");
 
             // model_key 下拉（可手输）
             cmbModelKey.Items.Clear();

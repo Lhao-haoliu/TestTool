@@ -30,7 +30,7 @@ namespace TestTool
 
         private void DetectForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://10.53.192.100:3884/detect";
+            txtUrl.Text = ApiEndpoints.GetUrl("detect");
         }
 
         private void btnSelectImage_Click(object sender, EventArgs e)

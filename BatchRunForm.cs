@@ -33,7 +33,7 @@ namespace TestTool
             dgv.AutoGenerateColumns = false;
             dgv.DataSource = _rows;
 
-            txtUrl.Text = "http://localhost:3882/similarity-check";
+            ApiEndpoints.BindTo(txtUrl, ApiEndpoints.GetUrl("zh similarity-check"), "整合");
             txtModelKey.Text = "Dummy";
 
             rbSingle.Checked = true;
