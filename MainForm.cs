@@ -26,6 +26,11 @@ namespace TestTool
                     new MenuItem("接口合集", () => new CombinedApiForm()),
                 }),
 
+                new MenuSection("参数自定义", new List<MenuItem>
+                {
+                    new MenuItem("参数自定义", () => new DynamicParamForm()),
+                }),
+
                 new MenuSection("其他", new List<MenuItem>
                 {
                     // 如果你的 FormatJson.cs 是一个 Form（不是工具类），可以放开这一行：
