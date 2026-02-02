@@ -26,6 +26,7 @@ namespace TestTool
             AddTab("基础 / Measure", new MeasureForm());
             AddTab("基础 / Color", new ColorForm());
             AddTab("基础 / 单图 + Expect", new ExpectSingleForm());
+            AddTab("基础 / 参数自定义", new DynamicParamForm());
 
             AddTab("Mirror / Detect", new MirrorDetectForm());
             AddTab("Mirror / Detect + OCR", new MirrorDetectOcrForm());
