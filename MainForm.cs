@@ -43,11 +43,6 @@ namespace TestTool
                     new MenuItem("批量处理", () => new BatchRunForm()),
                 }),
 
-                // ✅ 新增：Excel处理（不改变原有界面格局，只是多一个分组）
-                new MenuSection("Excel处理", new List<MenuItem>
-                {
-                    new MenuItem("Excel 清理工具", () => new ExcelScenarioCleanerConfigForm()),
-                }),
             };
 
             // 清空并重建
