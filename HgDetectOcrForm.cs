@@ -27,7 +27,7 @@ namespace TestTool
 
         private void HgDetectOcrForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://localhost:3880/detect-ocr";
+            txtUrl.Text = ApiEndpoints.GetUrl("hg detect-ocr");
             txtModelKey.Text = "";
             txtModel1Conf.Text = "0.5";
             txtModel2Conf.Text = "0.5";
@@ -82,11 +82,6 @@ namespace TestTool
                 }
 
                 string modelKey = txtModelKey.Text.Trim();
-                if (string.IsNullOrWhiteSpace(modelKey))
-                {
-                    MessageBox.Show("请输入 model_key（大类）");
-                    return;
-                }
 
                 string rawBase64 = txtBase64.Text.Trim();
                 if (string.IsNullOrWhiteSpace(rawBase64))

@@ -11,7 +11,7 @@ namespace TestTool
         private void MeasureForm_Load(object sender, EventArgs e)
         {
             // 默认值（你可以按需改）
-            txtUrl.Text = "http://10.53.192.100:3884/measure";
+            txtUrl.Text = ApiEndpoints.GetUrl("measure");
             txtModelKey.Text = "Dummy";
 
         }
@@ -115,11 +115,6 @@ namespace TestTool
 
                 // 2) model_key（界面输入，带默认值 Dummy）
                 string modelKey = txtModelKey.Text.Trim();
-                if (string.IsNullOrWhiteSpace(modelKey))
-                {
-                    MessageBox.Show("请输入 model_key");
-                    return;
-                }
 
                 // 3) Base64（上传图片生成）
                 string base64 = txtBase64.Text.Trim();

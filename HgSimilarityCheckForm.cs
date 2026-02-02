@@ -29,7 +29,7 @@ namespace TestTool
 
         private void HgSimilarityCheckForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://localhost:3880/similarity-check";
+            txtUrl.Text = ApiEndpoints.GetUrl("hg similarity-check");
             txtModelKey.Text = "AIM.KLA.KLAfront.Canon"; // 你可以按需要改默认
         }
 
@@ -81,11 +81,6 @@ namespace TestTool
                 }
 
                 string modelKey = txtModelKey.Text.Trim();
-                if (string.IsNullOrWhiteSpace(modelKey))
-                {
-                    MessageBox.Show("请输入 model_key");
-                    return;
-                }
 
                 string rawPublic = txtPublicBase64.Text.Trim();
                 if (string.IsNullOrWhiteSpace(rawPublic))

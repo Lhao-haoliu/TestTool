@@ -26,7 +26,7 @@ namespace TestTool
 
         private void ZhDetectOcrForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://10.53.192.100:3882/detect-ocr";
+            txtUrl.Text = ApiEndpoints.GetUrl("zh detect-ocr");
 
             // 下拉选项（允许手动输入）
             cmbModelKey.Items.Clear();
@@ -92,11 +92,6 @@ namespace TestTool
                 }
 
                 string modelKey = cmbModelKey.Text.Trim();
-                if (string.IsNullOrWhiteSpace(modelKey))
-                {
-                    MessageBox.Show("请选择或输入 model_key");
-                    return;
-                }
 
                 // 1) 发送 JSON（raw base64，不 Beautify）
                 string sendJson = JsonSerializer.Serialize(new

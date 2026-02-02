@@ -27,7 +27,7 @@ namespace TestTool
 
         private void TskDetectForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://10.53.192.100:3886/detect";
+            txtUrl.Text = ApiEndpoints.GetUrl("tsk detect");
             txtModelKey.Text = "multiple";
         }
 
@@ -78,11 +78,6 @@ namespace TestTool
                 }
 
                 string modelKey = txtModelKey.Text.Trim();
-                if (string.IsNullOrWhiteSpace(modelKey))
-                {
-                    MessageBox.Show("请输入 model_key");
-                    return;
-                }
 
                 // 1) 发送 JSON（不缩进）
                 string sendJson = JsonSerializer.Serialize(new

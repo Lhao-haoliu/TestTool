@@ -40,7 +40,7 @@ namespace TestTool
 
         private void SpliceForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://10.53.192.100:3887/splice";
+            txtUrl.Text = ApiEndpoints.GetUrl("splice");
 
             // 默认 1 组（1 行）+ 2 张（2 列）
             InitGrid(defaultRows: 1, defaultCols: 2);

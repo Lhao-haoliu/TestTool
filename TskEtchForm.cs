@@ -37,7 +37,7 @@ namespace TestTool
 
         private void TskEtchForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://10.53.192.100:3886/ETCH";
+            txtUrl.Text = ApiEndpoints.GetUrl("tsk etch");
 
             // model_key 下拉（可手输）
             cmbModelKey.Items.Clear();
@@ -333,11 +333,6 @@ namespace TestTool
                 }
 
                 string modelKey = cmbModelKey.Text.Trim();
-                if (string.IsNullOrWhiteSpace(modelKey))
-                {
-                    MessageBox.Show("请选择或输入 model_key");
-                    return;
-                }
 
                 var img2d = BuildImg2DBase64();
                 if (img2d.Count == 0)

@@ -33,7 +33,7 @@ namespace TestTool
 
         private void MirrorDetectOcrForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://10.53.192.100:3883/mirror";
+            txtUrl.Text = ApiEndpoints.GetUrl("mirror");
         }
 
         private void btnSelectImage_Click(object sender, EventArgs e)

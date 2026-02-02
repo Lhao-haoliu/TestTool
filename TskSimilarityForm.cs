@@ -29,7 +29,7 @@ namespace TestTool
 
         private void TskSimilarityForm_Load(object sender, EventArgs e)
         {
-            txtUrl.Text = "http://10.53.192.100:3886/classify-similarity";
+            txtUrl.Text = ApiEndpoints.GetUrl("tsk similarity");
         }
 
         private void btnSelectImage_Click(object sender, EventArgs e)
