@@ -34,6 +34,7 @@ namespace TestTool
             new ApiEndpoint("基础", "measure", "http://10.53.192.100:3884/measure"),
             new ApiEndpoint("基础", "detect_smooth", "http://10.53.192.100:3888/detect_smooth"),
             new ApiEndpoint("基础", "color", "http://10.53.192.100:3889/color"),
+            new ApiEndpoint("基础", "expect", "http://10.53.192.100:3884/expect"),
 
             new ApiEndpoint("Mirror", "mirror detect", "http://10.53.192.100:3883/detect"),
             new ApiEndpoint("Mirror", "mirror", "http://10.53.192.100:3883/mirror"),

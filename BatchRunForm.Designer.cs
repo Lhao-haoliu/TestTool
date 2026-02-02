@@ -34,6 +34,8 @@
 
             txtModelKey = new System.Windows.Forms.TextBox();
             label3 = new System.Windows.Forms.Label();
+            txtExpect = new System.Windows.Forms.TextBox();
+            labelExpect = new System.Windows.Forms.Label();
 
             btnRun = new System.Windows.Forms.Button();
             btnCancel = new System.Windows.Forms.Button();
@@ -178,14 +180,27 @@
 
             txtModelKey.Location = new System.Drawing.Point(471, 129);
             txtModelKey.Name = "txtModelKey";
-            txtModelKey.Size = new System.Drawing.Size(140, 23);
+            txtModelKey.Size = new System.Drawing.Size(100, 23);
             txtModelKey.TabIndex = 15;
+
+            // expect
+            labelExpect.AutoSize = true;
+            labelExpect.Location = new System.Drawing.Point(580, 133);
+            labelExpect.Name = "labelExpect";
+            labelExpect.Size = new System.Drawing.Size(56, 17);
+            labelExpect.TabIndex = 16;
+            labelExpect.Text = "expect：";
+
+            txtExpect.Location = new System.Drawing.Point(640, 129);
+            txtExpect.Name = "txtExpect";
+            txtExpect.Size = new System.Drawing.Size(120, 23);
+            txtExpect.TabIndex = 17;
 
             // 按钮
             btnRun.Location = new System.Drawing.Point(12, 160);
             btnRun.Name = "btnRun";
             btnRun.Size = new System.Drawing.Size(90, 28);
-            btnRun.TabIndex = 16;
+            btnRun.TabIndex = 18;
             btnRun.Text = "开始执行";
             btnRun.UseVisualStyleBackColor = true;
             btnRun.Click += btnRun_Click;
@@ -194,7 +209,7 @@
             btnCancel.Location = new System.Drawing.Point(108, 160);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new System.Drawing.Size(90, 28);
-            btnCancel.TabIndex = 17;
+            btnCancel.TabIndex = 19;
             btnCancel.Text = "取消";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
@@ -203,7 +218,7 @@
             btnExport.Location = new System.Drawing.Point(204, 160);
             btnExport.Name = "btnExport";
             btnExport.Size = new System.Drawing.Size(140, 28);
-            btnExport.TabIndex = 18;
+            btnExport.TabIndex = 20;
             btnExport.Text = "导出Excel(含图)";
             btnExport.UseVisualStyleBackColor = true;
             btnExport.Click += btnExport_Click;
@@ -211,13 +226,13 @@
             progress.Location = new System.Drawing.Point(360, 164);
             progress.Name = "progress";
             progress.Size = new System.Drawing.Size(310, 18);
-            progress.TabIndex = 19;
+            progress.TabIndex = 21;
 
             lblStatus.AutoSize = true;
             lblStatus.Location = new System.Drawing.Point(680, 166);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new System.Drawing.Size(35, 17);
-            lblStatus.TabIndex = 20;
+            lblStatus.TabIndex = 22;
             lblStatus.Text = "0 / 0";
 
             // 表格
@@ -298,6 +313,8 @@
             Controls.Add(btnExport);
             Controls.Add(btnCancel);
             Controls.Add(btnRun);
+            Controls.Add(txtExpect);
+            Controls.Add(labelExpect);
             Controls.Add(txtModelKey);
             Controls.Add(label3);
             Controls.Add(rbImageModel);
@@ -346,6 +363,8 @@
 
         private System.Windows.Forms.TextBox txtModelKey;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtExpect;
+        private System.Windows.Forms.Label labelExpect;
 
         private System.Windows.Forms.Button btnRun;
         private System.Windows.Forms.Button btnCancel;

@@ -78,6 +78,8 @@ namespace TestTool
             btnPickPublicFolder.Enabled = isCompare;
 
             labelPublicFolder.Text = isCompare ? "公版文件夹：" : "（双图比对时启用）公版文件夹：";
+            txtExpect.Enabled = !isCompare;
+            labelExpect.Enabled = !isCompare;
         }
 
         #endregion
@@ -267,10 +269,25 @@ namespace TestTool
                 {
                     byte[] img = File.ReadAllBytes(row.TargetPath);
                     string base64 = Convert.ToBase64String(img);
+                    string modelKey = txtModelKey.Text.Trim();
+                    string expect = txtExpect.Text.Trim();
 
-                    body = rbOnlyImage.Checked
-                        ? new { image_base64 = base64 }
-                        : new { image_base64 = base64, model_key = txtModelKey.Text.Trim() };
+                    var payload = new System.Collections.Generic.Dictionary<string, object>
+                    {
+                        ["image_base64"] = base64
+                    };
+
+                    if (rbImageModel.Checked || !string.IsNullOrWhiteSpace(modelKey))
+                    {
+                        payload["model_key"] = modelKey;
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(expect))
+                    {
+                        payload["expect"] = expect;
+                    }
+
+                    body = payload;
                 }
                 else
                 {

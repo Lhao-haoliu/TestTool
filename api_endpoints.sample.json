@@ -9,6 +9,11 @@
       "group": "基础",
       "name": "new-detect-v2",
       "url": "http://10.53.192.100:3884/detect-v2"
+    },
+    {
+      "group": "基础",
+      "name": "expect",
+      "url": "http://10.53.192.100:3884/expect"
     }
   ]
 }
